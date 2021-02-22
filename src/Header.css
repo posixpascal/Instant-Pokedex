@@ -1,0 +1,10 @@
+h1 {
+  font-size: 60px;
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    color: #F00;
+    justify-content: center;
+}

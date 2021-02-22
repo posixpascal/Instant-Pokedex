@@ -1,0 +1,14 @@
+ul li {
+  display:inline;
+  border: 1px solid black;
+  text-align: center;
+  text-transform: capitalize;
+}
+.capitalize {
+  text-transform: capitalize;
+}
+
+img {
+  width: 15vw;
+  height: 15vh;
+}
