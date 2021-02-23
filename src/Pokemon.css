@@ -1,14 +1,102 @@
-ul li {
-  display:inline;
-  border: 1px solid black;
+.types {
+  text-transform: capitalize;
+  color: white;
+  font-weight:bold;
   text-align: center;
-  text-transform: capitalize;
-}
-.capitalize {
-  text-transform: capitalize;
+
 }
 
+span {
+  text-align: center;
+  width: 50px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin-left: 2px;
+  margin-right: 2px;
+  text-shadow: -1px 1px #555;
+  border-radius: 4px;
+}
+
+
+.poison {
+  background-color: rgb(160, 64, 160);
+}
+
+.water {
+  background-color: rgb(104, 144, 240)
+}
+
+.steel {
+  background-color: rgb(184, 184, 208)
+}
+
+.rock {
+  background-color: rgb(184, 160, 56)
+}
+
+.psychic {
+  background-color: rgb(248, 88, 136)
+}
+
+.normal {
+  background-color: rgb(168, 168, 120)
+}
+
+.ice {
+  background-color: rgb(152, 216, 216)
+}
+
+.ground {
+  background-color: rgb(224, 192, 104)
+}
+
+.grass {
+  background-color: rgb(120, 200, 80)
+}
+
+.ghost {
+  background-color: rgb(112, 88, 152)
+}
+
+.flying {
+  background-color: rgb(168, 144, 240)
+}
+
+.fire {
+  background-color: rgb(240, 128, 48);
+}
+
+.fighting {
+  background-color: rgb(192, 48, 40)
+}
+
+.fairy {
+  background-color: rgb(238, 153, 172)
+}
+
+.electric {
+  background-color: rgb(248, 208, 48)
+}
+
+.dragon {
+  background-color: rgb(112, 56, 248)
+}
+
+.dark {
+  background-color: rgb(112, 88, 72)
+}
+
+.bug {
+  background-color: rgb(168, 184, 32)
+}
+
+
 img {
-  width: 15vw;
-  height: 15vh;
+  width:20vw;
+  height:20vh;
+  max-width: 20vh;
+  max-height: 20vh;
+  object-fit: fill;
 }

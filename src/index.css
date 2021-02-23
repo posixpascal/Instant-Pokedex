@@ -7,6 +7,32 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1 {
+  font-size:4vw;
+}
+p {
+  font-size:2.5vw;
+}
+
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+   p {
+     font-size: 2vw;
+     } }
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) { p {
+  font-size:1.5vw;
+} }
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { p {
+  font-size:1vw;
+} }
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

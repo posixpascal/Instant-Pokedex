@@ -8,8 +8,7 @@ export default class Header extends PureComponent {
   }
   render() {
     return (
-    <header>
-      <div className="container mt-5 ">
+      <div className="header container mt-5 pb-2 ">
         <div className="row">
             <div className="col-lg-3 text-center">
               <h1 className="title">Instadex</h1>
@@ -22,7 +21,6 @@ export default class Header extends PureComponent {
             </div>
         </div>
       </div>
-    </header>
     )
   }
 }

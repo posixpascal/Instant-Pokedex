@@ -7,29 +7,53 @@ export default class Pokemon extends Component {
     this.state = {
       types: [],
       id: 0,
+
     }
   }
 
-  componentDidMount() {
-    fetch(this.props.url)
-    //fetch('https://pokeapi.co/api/v2/pokemon/' + this.props.name)
+
+  fetchData(name) {
+    fetch("https://pokeapi.co/api/v2/pokemon/" + name)
     .then(response => response.json())
     .then((data) => (this.setState({
       types: data.types,
-      id :data.id
+      id :data.id,
     })))
+  }
+
+  componentDidMount() {
+      this.fetchData(this.props.name)
     }
+
+  componentDidUpdate(prevProps) {
+    if(this.props.name !== prevProps.name || this.props.evoTrigger !== prevProps.evoTrigger)
+      this.fetchData(this.props.name)
+  }
+
+//{this.state.types.map(type => (<li className="">{type.type.name}</li>))}
  render() {
+   if (this.state.types === undefined) return null
    return (
      <div className="container mt-3">
-       <p>{this.props.url}</p>
-       <p className="id text-center mb-n1">#{this.state.id}</p>
-       <h3 className="name capitalize text-center">{this.props.name}</h3>
-       <img className="artwork img-fluid" src={"https://img.pokemondb.net/artwork/" + this.props.name +".jpg"} alt={this.props.name}/>
        <div className="row">
-         <ul className="types my-1">
-           {this.state.types.map(type => (<li className="capitalize mx-2 col-6 type" key={type.type.name}>{type.type.name}</li>))}
-         </ul>
+      <div className="col-3 align-self-center">
+      <p className="">{this.props.evoTrigger}</p>
+      <span className="arrow-right"></span>
+      </div>
+      <div className="col-9">
+       <div className="row justify-content-center">
+         <p className="id text-center mb-n1">#{this.state.id}</p>
+       </div>
+       <div className="row justify-content-center">
+         <h3 className="name capitalize text-center">{this.props.name}</h3>
+       </div>
+       <div className="row justify-content-center">
+         <img className="artwork img-responsive" src={"https://img.pokemondb.net/artwork/" + this.props.name +".jpg"} alt={this.props.name}/>
+       </div>
+        <div className="row mt-2 justify-content-center">
+          <p className="types">{this.state.types.map(type => (<span className={type.type.name} >{type.type.name} </span>))}</p>
+       </div>
+       </div>
        </div>
      </div>
    )

@@ -17,7 +17,8 @@ export default class App extends PureComponent {
     this.state = {
       allPokemon: [],
       filteredPokemon: [],
-      inputLength: 0,
+      input: "",
+      evolutionChainData: [],
     };
   }
  handleSearchChange = event => {
@@ -25,18 +26,21 @@ export default class App extends PureComponent {
      filteredPokemon: filterPokemon(this.state.allPokemon,event.target.value)
    });
  };
-  handler(len) {
+  handler(inp) {
   this.setState({
-    inputLength: len
+    input: inp
   })
 }
 
  componentDidMount() {
-   fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
+   fetch('https://pokeapi.co/api/v2/pokemon/?limit=151')
    .then(response => response.json())
    .then((data) => { this.setState({allPokemon: data.results})
    })
    .catch(console.log)
+   fetch("https://pokeapi.co/api/v2/evolution-chain/?limit=78")
+   .then(response => response.json())
+   .then((data) => {this.setState({evolutionChainData: data.results})})
  }
 
 render() {
@@ -48,7 +52,7 @@ render() {
         />
       <PokemonResults
         pokemonData={this.state.filteredPokemon}
-        inputLength={this.state.inputLength}
+        input={this.state.input}
         />
     </div>
   );

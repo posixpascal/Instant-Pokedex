@@ -14,7 +14,7 @@ export default class Search extends PureComponent {
   }
   handleChange = event => {
   this.props.textChange(event);
-  this.props.handler(this.myRef.current.value.length)
+  this.props.handler(this.myRef.current.value)
   };
 
 

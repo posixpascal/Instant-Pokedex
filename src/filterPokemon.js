@@ -8,4 +8,4 @@ export default function filterPokemon(allPokemon, searchText) {
       }
       return false;
     })
-}
+    }
