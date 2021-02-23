@@ -1,26 +1,35 @@
-import React, {PureComponent} from "react"
-import "./Header.css"
-import Search from "./Search"
+import "./Header.css";
+import Search from "./Search";
+import DropdownGeneration from "./DropdownGeneration";
+import PropTypes from "prop-types";
 
-export default class Header extends PureComponent {
-  constructor(props) {
-    super(props)
-  }
-  render() {
+function Header(props) {
     return (
       <div className="header container mt-5 pb-2 ">
-        <div className="row">
-            <div className="col-lg-3 text-center">
-              <h1 className="title">Instadex</h1>
-            </div>
-            <div className="col-lg-9 align-self-center">
-              <Search
-                textChange={this.props.textChange}
-                handler={this.props.handler}
-                />
-            </div>
+        <div className="row align-items-center">
+          <div className="col-lg-3 text-center">
+            <h1 className="title">Instadex</h1>
+          </div>
+          <div className="col-lg-2">
+            <DropdownGeneration
+              generationHandler={props.generationHandler}
+            />
+          </div>
+          <div className="col-lg-7">
+            <Search
+              textChange={props.textChange}
+              inputHandler={props.inputHandler}
+            />
+          </div>
         </div>
       </div>
     )
-  }
 }
+
+Header.propTypes = {
+  generationHandler: PropTypes.func,
+  textChange: PropTypes.func,
+  inputHandler: PropTypes.func
+}
+
+export default Header

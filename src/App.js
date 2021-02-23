@@ -1,60 +1,42 @@
-import React, { PureComponent } from "react"
 import Header from "./Header"
 import PokemonResults from "./PokemonResults"
-import filterPokemon from "./filterPokemon"
+import filterPokemonBySearch from "./filterPokemonBySearch"
 import './App.css'
+import React, {useState, useEffect} from "react"
 
-//// TODO: handler?
-// TODO: handleSearchChange?
-// TODO: allpokemon?
-// TODO: filteredPokemon?
-// TODO:componentDidMount?
+export default function App() {
+  const [allPokemon, setAllPokemon] = useState([]);
+  const [generation, setGeneration] = useState(1);
+  const [filteredPokemon, setFilteredPokemon] = useState([]);
+  const [input, setInput] = useState("");
+  const [evolutionChainData, setEvolutionChainData] = useState([]);
 
-export default class App extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.handler = this.handler.bind(this)
-    this.state = {
-      allPokemon: [],
-      filteredPokemon: [],
-      input: "",
-      evolutionChainData: [],
-    };
-  }
- handleSearchChange = event => {
-   this.setState({
-     filteredPokemon: filterPokemon(this.state.allPokemon,event.target.value)
-   });
- };
-  handler(inp) {
-  this.setState({
-    input: inp
-  })
-}
+  useEffect(() => {
+    handleSearchChange(setFilteredPokemon,allPokemon,input)
+   },[allPokemon,input]);
 
- componentDidMount() {
+ useEffect(() => {
    fetch('https://pokeapi.co/api/v2/pokemon/?limit=151')
    .then(response => response.json())
-   .then((data) => { this.setState({allPokemon: data.results})
-   })
-   .catch(console.log)
-   fetch("https://pokeapi.co/api/v2/evolution-chain/?limit=78")
-   .then(response => response.json())
-   .then((data) => {this.setState({evolutionChainData: data.results})})
- }
+   .then((data) => setAllPokemon(data.results));
+ },[generation]);
 
-render() {
+ console.log(allPokemon)
+
   return (
     <div>
       <Header
-        textChange={this.handleSearchChange}
-        handler={this.handler}
+        textChange={handleSearchChange}
+        inputHandler={setInput}
+        generationHandler={setGeneration}
         />
       <PokemonResults
-        pokemonData={this.state.filteredPokemon}
-        input={this.state.input}
+        pokemonData={filteredPokemon}
+        input={input}
         />
     </div>
   );
 }
+function handleSearchChange(setFilteredPokemon,allPokemon,input) {
+  setFilteredPokemon(filterPokemonBySearch(allPokemon,input));
 }

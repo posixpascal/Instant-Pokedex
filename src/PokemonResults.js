@@ -1,24 +1,19 @@
-import React, {Component} from "react"
 import "./PokemonResults.css"
 import PokemonResultRow from "./PokemonResultRow"
 import Pokemon from "./Pokemon"
+import PropTypes from "prop-types";
 
-
-
-export default class PokemonResults extends Component {
-  render() {
-    const data = this.props.pokemonData
+function PokemonResults(props) {
     return (
       <div className="container mt-5">
-        {this.props.input.length === 0 ?
+        {props.input.length === 0 ?
           <h1 className="placeholder text-center">Your selected Pokemon's evolution tree will be shown here</h1>
-          : data.length > 0 ?
-          data.map(data => (
+          : props.pokemonData.length > 0 ?
+          props.pokemonData.map(data => (
             <div className="row my-3">
               <PokemonResultRow
-              input={this.props.input}
-              name={data.name}
-              url={data.url} />
+                name={data.name}
+                />
             </div>
           ))
           :
@@ -26,6 +21,11 @@ export default class PokemonResults extends Component {
         }
       </div>
     )
-  }
-
 }
+
+PokemonResults.propTypes = {
+  input: PropTypes.string,
+  pokemonData: PropTypes.func
+}
+
+export default PokemonResults;
