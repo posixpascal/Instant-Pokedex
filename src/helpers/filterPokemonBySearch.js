@@ -6,5 +6,5 @@ export default function filterPokemonBySearch(allPokemon, searchText) {
       }
       return false;
     })
-    .slice(0,5)
+    .slice(0,1)
     }

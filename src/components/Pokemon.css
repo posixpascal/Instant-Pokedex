@@ -4,8 +4,6 @@
   font-weight:bold;
   text-align: center;
   align-items: center;
-
-
 }
 
 .trigger {
@@ -16,9 +14,11 @@
   font-weight:bold;
 }
 
+
+.artwork {}
+
 span {
   text-align: center;
-  width: 50px;
   padding-left: 4px;
   padding-right: 4px;
   padding-top: 2px;
@@ -32,7 +32,6 @@ span {
 
 .poison {
   background-color: rgb(160, 64, 160);
-  text-transform: capitalize;
 }
 
 .water {
@@ -101,13 +100,4 @@ span {
 
 .bug {
   background-color: rgb(168, 184, 32)
-}
-
-
-img {
-  width:20vw;
-  height:20vh;
-  max-width: 20vh;
-  max-height: 20vh;
-  object-fit: fill;
 }

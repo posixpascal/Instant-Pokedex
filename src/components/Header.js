@@ -7,7 +7,7 @@ function Header(props) {
     return (
         <div className="row header my-5 align-items-center justify-content-center">
           <div className="col-lg-3 text-center">
-            <h1 className="title">Instadex</h1>
+            <a href=""><h1 className="title">Instadex</h1></a>
           </div>
           <div className="text-center  pb-2 col-lg-2">
             <DropdownGeneration
