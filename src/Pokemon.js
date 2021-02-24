@@ -16,37 +16,42 @@ function Pokemon(props) {
 
   return (
     <div className="container mt-3">
-        <div className="row">
-        <div className="col-4 align-self-center d-inline-block justify-content-center">
-        <p className="trigger">{props.evoTrigger}</p>
+      <div className="row justify-content-center">
+        <div className="col-4 align-self-center">
+          <p className="trigger">{props.evoTrigger}<hr></hr></p>
         </div>
         <div className="col-8">
-        <div className="row justify-content-center">
+      <div className="row justify-content-center">
         <p className="id text-center mb-n1">#{id}</p>
-        </div>
-        <div className="row justify-content-center">
+      </div>
+      <div className="row justify-content-center">
         <h3 className="name capitalize text-center">{props.name}</h3>
-        </div>
-        <div className="row justify-content-center">
+      </div>
+      <div className="row justify-content-center">
         <img className="artwork img-responsive" src={"https://img.pokemondb.net/artwork/" + props.name +".jpg"} alt={props.name}/>
-        </div>
-        <div className="row mt-2 justify-content-center">
+      </div>
+      <div className="row mt-2 justify-content-center">
         {isBusy || types == undefined ? (
-              <div class="spinner-border justify-content-center align-self-center" role="status">
-              <span class="sr-only">Loading...</span>
-              </div>) : (
-          <p className="types">{types.map(type => (<span className={type.type.name} >{type.type.name} </span>))}</p>)
+          <div class="spinner-border justify-content-center align-self-center" role="status">
+          <span class="sr-only">Loading...</span>
+          </div>)
+          : (
+          <p className="types">{types.map(type => (<span className={type.type.name}>{capitalize(type.type.name)}</span>))}</p>)
         }
-          </div>
-          </div>
-          </div>
+      </div>
+      </div>
         </div>
-      )
-    }
+      </div>
+    )
+  }
 
 Pokemon.propTypes = {
   name: PropTypes.string,
   evoTrigger: PropTypes.string
+}
+
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 export default Pokemon;

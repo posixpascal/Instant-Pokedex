@@ -11,6 +11,7 @@ function EvolutionChain(props) {
     fetchData(setFirstForm,setFirstEvolutions,props.name);
   },[props.name]);
 
+
       return(
         <div className="container">
           <div className="flex-column d-flex flex-sm-row align-items-center">
@@ -30,7 +31,10 @@ function EvolutionChain(props) {
             </div>
             <div className="col-4">
             {firstEvolutions.map(firstEvo =>
-              (firstEvo.evolves_to.map(secondEvo => <Pokemon evoTrigger={getEvoTrigger(secondEvo)} name={secondEvo.species.name}/>)))}
+              (firstEvo.evolves_to.map(secondEvo => (secondEvo.species.url.split("/")[6] <= 151) ?
+               (
+                <Pokemon evoTrigger={getEvoTrigger(secondEvo)} name={secondEvo.species.name}/>
+              ) : null)))}
             </div>
             <connection from="firstForm" to="firstEvo" tail></connection>
         </div>
@@ -54,10 +58,15 @@ function getEvoTrigger(evo) {
     case "level-up":
     return triggers.map(t => (t[0].replace("_"," ") + " " + t[1]));
     case "use-item":
-    return  triggers.map(t => (triggerName.replace("-"," ") + " " + t[1].name.replace("-"," ")))
+    return  triggers.map(t => (t[1].name.replace("-"," ")))
     case "trade":
     return triggers.map(t => (triggerName.replace("-"," ") + " while holding " + t[1].name.replace("-"," ")))
   }
   return "Evolution trigger not handled yet";
 }
+
+EvolutionChain.propTypes = {
+  name : PropTypes.string,
+}
+
 export default EvolutionChain;
