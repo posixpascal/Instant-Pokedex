@@ -1,16 +1,11 @@
 import Header from "./components/Header";
 import PokemonResults from "./components/PokemonResults";
 import filterPokemonBySearch from "./helpers/filterPokemonBySearch";
+import getGenerationQuery from "./helpers/getGenerationQuery"
 import './App.css';
 import React, {useState, useEffect} from "react";
 
-//TODO: semicolons
-//TODO: EvoTrigger aus Pokemon rausziehen?
-//TODO: freien Platz links entfernen
 //TODO: evolutionChain.js aufspalten
-//TODO: andere evoTrigger
-//TODO: EvoTrigger Golem
-
 //TODO: nach Generationen filtern
 //TODO: mobile
 
@@ -20,31 +15,37 @@ export default function App() {
   const [generation, setGeneration] = useState(1);
   const [filteredPokemon, setFilteredPokemon] = useState([]);
   const [input, setInput] = useState("");
-  const handleSearchChange = ((setFilteredPokemon,allPokemon,input) => {
-    setFilteredPokemon(filterPokemonBySearch(allPokemon,input));
-  });
-
+  console.log(allPokemon)
   useEffect(() => {
     handleSearchChange(setFilteredPokemon,allPokemon,input)
-   },[allPokemon,input]);
+  },[allPokemon,input]);
 
- useEffect(() => {
-   fetch('https://pokeapi.co/api/v2/pokemon/?limit=151')
-   .then(response => response.json())
-   .then((data) => setAllPokemon(data.results));
- },[generation]);
+  useEffect(() => {
+    fetchAllPokemon(getGenerationQuery(generation),setAllPokemon)
+  },[generation]);
 
   return (
     <div className="container">
       <Header
-        textChange={handleSearchChange}
+        searchChangeHandler={handleSearchChange}
         inputHandler={setInput}
         generationHandler={setGeneration}
       />
       <PokemonResults
-        pokemonData={filteredPokemon}
+        filteredPokemon={filteredPokemon}
+        allPokemon={allPokemon}
         input={input}
       />
     </div>
   );
 }
+
+function fetchAllPokemon(query,setAllPokemon) {
+  fetch('https://pokeapi.co/api/v2/pokemon/' + query)
+  .then(response => response.json())
+  .then((data) => setAllPokemon(data.results));
+}
+
+const handleSearchChange = ((setFilteredPokemon,allPokemon,input) => {
+  setFilteredPokemon(filterPokemonBySearch(allPokemon,input));
+});

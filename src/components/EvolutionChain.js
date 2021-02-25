@@ -7,54 +7,50 @@ import getEvoTrigger from "../helpers/getEvoTrigger"
 function EvolutionChain(props) {
   const [firstForm, setFirstForm] = useState("");
   const [firstEvolutions, setFirstEvolutions] = useState([]);
+  const [firstFormInGeneration,setFirstFormInGeneration] = useState(false)
+  const [firstFormShown, setFirstFormShown] = useState(false)
 
   useEffect(() => {
     fetchData(setFirstForm,setFirstEvolutions,props.name);
   },[props.name]);
 
-//Test
-// <div className="col-4">
-// {firstEvolutions.map(firstEvo =>
-//   (firstEvo.evolves_to.map(secondEvo => (secondEvo.species.url.split("/")[6] <= 151) ?
-//    (
-//     <Pokemon evoTrigger={getEvoTrigger(secondEvo)} name={secondEvo.species.name}/>
-//   ) : null)))}
-// </div> flex-column d-flex flex-sm-row align-items-center
-      return(
-          <div className="flex-sm-row flex-column d-flex align-bottom align-items-center">
-            <div className="col-1"><span></span></div>
-            <div className="col-3 align-self-center">
-              <Pokemon name={firstForm}/>
-            </div>
-            <div className ="col-4 align-self-center">
-              {firstEvolutions.map(evo =>
-                (evo.species.url.split("/")[6] <= 151) ?
-                  <div className="row">
-                    <div className="col-3 align-self-center text-center">
-                      <p className="trigger pb-0 mb-0">{getEvoTrigger(evo)}</p>
-                      <hr className="pt-0 mt-0"></hr>
-                    </div>
-                  <div className="col-9">
-                      <Pokemon name={evo.species.name}/>
-                </div>
-              </div>: null)}
-            </div>
-            <div className="col-4 h-100 align-self-center ">
-              {firstEvolutions.map(firstEvo =>
-                (firstEvo.evolves_to.map(secondEvo => (secondEvo.species.url.split("/")[6] <= 151) ?
-                   <div className="row">
-                     <div className="col-3 align-self-center text-center">
-                       <p className="trigger pb-0 mb-0">{getEvoTrigger(secondEvo)}</p>
-                       <hr className="pt-0 mt-0"></hr>
-                     </div>
-                     <div className="col-9">
-                       <Pokemon name={secondEvo.species.name}/>
-                    </div>
-                   </div> : null)))}
-            </div>
-        </div>
-      );
+  return(
+    <div className="flex-sm-row flex-column d-flex">
+      {evoInGeneration(props.allPokemon,firstForm) ?
+      <div className="col-3 align-self-center">
+        <Pokemon name={firstForm}/>
+      </div> : null
     }
+      <div className ="col-4 align-self-center">
+        {firstEvolutions.map(evo =>
+          (evoInGeneration(props.allPokemon,evo.species.name)) ?
+          <div className="row">
+            <div className="col-sm-3 align-self-center text-center">
+              <p className="trigger pb-0 mb-0">{getEvoTrigger(evo)}</p>
+              <hr className="pt-0 mt-0"></hr>
+            </div>
+            <div className="col-sm-9">
+              <Pokemon name={evo.species.name}/>
+            </div>
+          </div>: null)}
+        </div>
+        <div className="col-4 ">
+          {firstEvolutions.map(firstEvo =>
+            (firstEvo.evolves_to.map(secondEvo => (evoInGeneration(props.allPokemon,secondEvo.species.name)) ?
+            <div className="row h-100">
+              <div className="col-3 align-self-center text-center">
+                <p className="trigger pb-0 mb-0">{getEvoTrigger(secondEvo)}</p>
+                <hr className="pt-0 mt-0"></hr>
+              </div>
+              <div className="col-9">
+                <Pokemon name={secondEvo.species.name}/>
+              </div>
+            </div> : null)))}
+          </div>
+          <div className="col-1"><span></span></div>
+        </div>
+        );
+      }
 
 function fetchData(setFirstForm,setFirstEvolutions,name) {
   fetch('https://pokeapi.co/api/v2/pokemon-species/' + name)
@@ -64,8 +60,14 @@ function fetchData(setFirstForm,setFirstEvolutions,name) {
     .then((data) => {setFirstForm(data.chain.species.name);setFirstEvolutions(data.chain.evolves_to)})});
 }
 
+
+const evoInGeneration = (allPokemon,evoName) => {
+  return allPokemon.map((p) => p.name).includes(evoName);
+}
+
 EvolutionChain.propTypes = {
   name : PropTypes.string,
+  allPokemon: PropTypes.array,
 }
 
 export default EvolutionChain;

@@ -6,18 +6,7 @@
   align-items: center;
 }
 
-.trigger {
-  text-align: center;
-  text-transform: capitalize;
-  display: inline-block;
-  font-size: 12px;
-  font-weight:bold;
-}
-
-
-.artwork {}
-
-span {
+.types span {
   text-align: center;
   padding-left: 4px;
   padding-right: 4px;
@@ -29,6 +18,13 @@ span {
   border-radius: 4px;
 }
 
+.trigger {
+  text-align: center;
+  text-transform: capitalize;
+  display: inline-block;
+  font-size: 12px;
+  font-weight:bold;
+}
 
 .poison {
   background-color: rgb(160, 64, 160);

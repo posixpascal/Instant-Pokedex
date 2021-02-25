@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 function Header(props) {
     return (
-        <div className="row header my-5 align-items-center justify-content-center">
+        <div className=" mx-2 row header my-5 align-items-center justify-content-center">
           <div className="col-lg-3 text-center">
             <a href=""><h1 className="title">Instadex</h1></a>
           </div>
@@ -16,7 +16,7 @@ function Header(props) {
           </div>
           <div className="col-lg-7 pb-2 ">
             <Search
-              textChange={props.textChange}
+              searchChangeHandler={props.searchChangeHandler}
               inputHandler={props.inputHandler}
             />
           </div>
@@ -26,7 +26,7 @@ function Header(props) {
 
 Header.propTypes = {
   generationHandler: PropTypes.func,
-  textChange: PropTypes.func,
+  searchChangeHandler: PropTypes.func,
   inputHandler: PropTypes.func
 }
 

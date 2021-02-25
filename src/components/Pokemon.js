@@ -15,22 +15,22 @@ function Pokemon(props) {
   },[props.name]);
 
   return (
-    <div>
-      <p className="id text-center mb-n1">#{id}</p>
-      <h3 className="name capitalize text-center">{props.name}</h3>
-      <div className="artwork">
-        <img className="img-fluid h-100 w-100"src={"https://img.pokemondb.net/artwork/" + props.name +".jpg"} alt={props.name}/>
-      </div>
-      <div className="mt-2 justify-content-center">
+    <div className="my-4">
       {!isBusy && types !== undefined ?
-      <p className="types">{types.map(type => (<span className={type.type.name}>{capitalize(type.type.name)}</span>))}</p>
-      :
-      <div className="spinner-border justify-content-center align-self-center" role="status">
-      <span className="sr-only">Loading...</span>
-      </div>}
+        <div className="h-100">
+          <p className="id text-center mb-n1">#{id}</p>
+          <h4 className="capitalize text-center">{props.name}</h4>
+          <img className="artwork"src={"https://img.pokemondb.net/artwork/" + props.name +".jpg"} alt={props.name}/>
+          <div className="mt-2 justify-content-center ">
+            <p className="types">{types.map(type => (<span className={type.type.name}>{capitalize(type.type.name)}</span>))}</p>
+          </div>
+        </div>
+        :
+        <div className="spinner-border justify-content-center align-self-center" role="status">
+          <span className="sr-only">Loading...</span>
+        </div>}
       </div>
-    </div>
-    )
+  );
   }
 
 Pokemon.propTypes = {

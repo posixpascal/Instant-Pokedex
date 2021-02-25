@@ -20,6 +20,7 @@ export default function DropdownGeneration(props) {
       <button className="dropdown-item" onClick={(e) => {setBtnTitle("Generation 6");}} type="button">Generation 6</button>
       <button className="dropdown-item" onClick={(e) => {setBtnTitle("Generation 7");}} type="button">Generation 7</button>
       <button className="dropdown-item" onClick={(e) => {setBtnTitle("Generation 8");}} type="button">Generation 8</button>
+      <button className="dropdown-item" onClick={(e) => {setBtnTitle("All Generations");}} type="button">All Generations</button>
     </div>
     </div>
   )

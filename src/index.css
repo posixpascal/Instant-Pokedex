@@ -8,30 +8,67 @@ body {
 }
 
 h1 {
-  font-size:4vw;
+  font-size: calc(25px + 2vw);
 }
+
+h2 {
+  font-size: calc(25px + 1vw);
+}
+
+h3 {
+  font-size: calc(20px + 0.4vw);
+}
+
+h4 {
+  font-size: calc(1px + 0,1vw);
+}
+
 p {
-  font-size:2.5vw;
+  font-size: calc(12px + 0.3vw);
 }
 
-/* Extra small devices (phones, less than 768px) */
-/* No media query since this is the default in Bootstrap */
+img {
+  display:block;
+  margin:auto;
+  width: 20vw;
+  height: 10vh;
+}
 
-/* Small devices (tablets, 768px and up) */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  img {
+    display:block;
+    margin:auto;
+    width: 20vw;
+    height: 20vh;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
 @media (min-width: 768px) {
-   p {
-     font-size: 2vw;
-     } }
+}
 
-/* Medium devices (desktops, 992px and up) */
-@media (min-width: 992px) { p {
-  font-size:1.5vw;
-} }
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  img {
+    display:block;
+    margin:auto;
+    width: 10vw;
+    height: 20vh;
+  }
 
-/* Large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) { p {
-  font-size:1vw;
-} }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  img {
+    display:block;
+    margin:auto;
+    width: 10vw;
+    height: 20vh;
+  }
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

@@ -14,11 +14,11 @@ function Search(props) {
         />
       </form>
 
-    );
+    )
   }
 
 Search.propTypes = {
-  textChange: PropTypes.func,
+  searchChangeHandler: PropTypes.func,
   inputHandler: PropTypes.func,
   name: PropTypes.func
 };
