@@ -9,8 +9,6 @@ function PokemonResultRow(props) {
         Are you looking for: <b className="capitalize">{props.name}</b>?
       </h3>
       <AllEvolutionChains
-        shownEvoLines={props.shownEvoLines}
-        setCurrentEvoLine={props.setCurrentEvoLine}
         name={props.name}
         allPokemon={props.allPokemon}
       />

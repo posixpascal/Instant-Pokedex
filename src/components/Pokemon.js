@@ -5,17 +5,12 @@ import PropTypes from "prop-types";
 function Pokemon(props) {
   const [types, setTypes] = useState(["Type", "Type2"]);
   const [id, setId] = useState(1);
+
+  // isBusy means that the types array is still loading
   const [isBusy, setBusy] = useState(true);
 
   useEffect(() => {
-    setBusy(true);
-    fetch("https://pokeapi.co/api/v2/pokemon/" + props.name)
-      .then((response) => response.json())
-      .then((data) => {
-        setId(data.id);
-        setTypes(data.types);
-        setBusy(false);
-      });
+    fetchPokemonTypesAndId(props.name,setId,setTypes,setBusy)
   }, [props.name]);
 
   return (
@@ -55,6 +50,16 @@ Pokemon.propTypes = {
   name: PropTypes.string,
   evoTrigger: PropTypes.array,
 };
+
+const fetchPokemonTypesAndId = (name,setId,setTypes,setBusy) => {
+  setBusy(true);
+  fetch("https://pokeapi.co/api/v2/pokemon/" + name)
+    .then((response) => response.json())
+    .then((data) => {
+      setId(data.id);
+      setTypes(data.types);
+      setBusy(false);
+    });}
 
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);

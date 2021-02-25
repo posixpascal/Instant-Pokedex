@@ -4,18 +4,11 @@ import filterPokemonBySearch from "../helpers/filterPokemonBySearch";
 import './App.css';
 import React, {useState, useEffect} from "react";
 
-//TODO: falsche Generation verstecken
-//TODO: mobile
-//TODO: mew nicht suchbar
-//TODO: proptypes
-
-
 export default function App() {
   const [allPokemon, setAllPokemon] = useState([]);
   const [generation, setGeneration] = useState(1);
   const [filteredPokemon, setFilteredPokemon] = useState([]);
   const [input, setInput] = useState("");
-
 
   useEffect(() => {
     handleSearchChange(setFilteredPokemon,allPokemon,input)

@@ -10,11 +10,8 @@ function AllEvolutionChains(props) {
 
   useEffect(() => {
      fetchData(
-       props.setCurrentEvoLine,
        props.allPokemon,
        setFirstForm,
-       props.setShownEvoLines,
-       props.shownEvoLines,
        setFirstEvolutions,
        setSecondEvolutions,
        props.name,
@@ -50,11 +47,8 @@ function AllEvolutionChains(props) {
 }
 
 function fetchData(
-  setCurrentEvoLine,
   allPokemon,
   setFirstForm,
-  setShownEvoLines,
-  shownEvoLines,
   setFirstEvolutions,
   setSecondEvolutions,
   name,
