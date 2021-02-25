@@ -2,11 +2,16 @@ import React, { useState, useEffect } from "react";
 import EvolutionChain from "./EvolutionChain";
 import getEvoTrigger from "../helpers/getEvoTrigger";
 import createEvolutionChains, {createPokemonWithoutEvolution,createShortEvolutionChain,createLongEvolutionChain} from "../helpers/createEvolutionChains"
+import PropTypes from "prop-types";
 
 function AllEvolutionChains(props) {
   const [firstForm, setFirstForm] = useState("");
   const [firstEvolutions, setFirstEvolutions] = useState([]);
   const [secondEvolutions, setSecondEvolutions] = useState([]);
+  var i = 1
+  if (firstEvolutions.length > 0 )
+    for (i; i < firstEvolutions.length; i++)
+      console.log(getEvoTrigger(firstEvolutions[i]))
 
   useEffect(() => {
      fetchData(
@@ -15,7 +20,6 @@ function AllEvolutionChains(props) {
        setFirstEvolutions,
        setSecondEvolutions,
        props.name,
-       pokemonInGeneration
      );
   }, [props.name,props.allPokemon]);
 
@@ -52,7 +56,6 @@ function fetchData(
   setFirstEvolutions,
   setSecondEvolutions,
   name,
-  pokemonInGeneration,
 ) {
   fetch("https://pokeapi.co/api/v2/pokemon-species/" + name)
     .then((response) => response.json())
@@ -69,10 +72,9 @@ function fetchData(
     });
 }
 
-
-
-const pokemonInGeneration = (allPokemon, name) => {
-  return allPokemon.map((p) => p.name).includes(name);
-};
+AllEvolutionChains.propTypes = {
+  allPokemon : PropTypes.array,
+  name: PropTypes.string,
+}
 
 export default AllEvolutionChains;

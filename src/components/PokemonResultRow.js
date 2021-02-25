@@ -2,6 +2,7 @@ import React, {useState} from "react"
 import "./PokemonResultRow.css";
 import AllEvolutionChains from "./AllEvolutionChains";
 import PropTypes from "prop-types";
+
 function PokemonResultRow(props) {
   return (
     <div className="result-row">

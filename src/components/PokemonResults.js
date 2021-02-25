@@ -28,7 +28,7 @@ PokemonResults.propTypes = {
 // create a row that will show all evolution lines of the filtered pokemon
 const createRowsFromFilteredPokemon = (allPokemon,filteredPokemon) =>
     filteredPokemon.map((p) => (
-      <div className="row mx-2 mt-3">
+      <div className="row mx-2 mt-3" key={p.name}>
         <PokemonResultRow
           name={p.name}
           allPokemon={allPokemon}
