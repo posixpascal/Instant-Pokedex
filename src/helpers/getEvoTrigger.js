@@ -7,7 +7,7 @@ export default function getEvoTrigger(evo) {
     ? triggerName
     : triggers.map(
         (t) =>
-          t[0].replaceAll("_", " ") +
+          t[0].replaceAll("_", " ") +":" +
           (t[1] !== undefined
             ? t[1].name !== undefined
               ? " " + t[1].name.replaceAll("-", " ")

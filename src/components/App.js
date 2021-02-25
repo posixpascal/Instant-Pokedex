@@ -1,13 +1,13 @@
-import Header from "./components/Header";
-import PokemonResults from "./components/PokemonResults";
-import filterPokemonBySearch from "./helpers/filterPokemonBySearch";
-import getGenerationQuery from "./helpers/getGenerationQuery"
+import Header from "./Header";
+import PokemonResults from "./PokemonResults";
+import filterPokemonBySearch from "../helpers/filterPokemonBySearch";
 import './App.css';
 import React, {useState, useEffect} from "react";
 
-//TODO: evolutionChain.js aufspalten
 //TODO: falsche Generation verstecken
 //TODO: mobile
+//TODO: mew nicht suchbar
+//TODO: proptypes
 
 
 export default function App() {
@@ -15,13 +15,14 @@ export default function App() {
   const [generation, setGeneration] = useState(1);
   const [filteredPokemon, setFilteredPokemon] = useState([]);
   const [input, setInput] = useState("");
-  console.log(allPokemon)
+
+
   useEffect(() => {
     handleSearchChange(setFilteredPokemon,allPokemon,input)
   },[allPokemon,input]);
 
   useEffect(() => {
-    fetchAllPokemon(getGenerationQuery(generation),setAllPokemon)
+    fetchAllPokemon("?limit=900",setAllPokemon)
   },[generation]);
 
   return (
@@ -40,8 +41,9 @@ export default function App() {
   );
 }
 
-function fetchAllPokemon(query,setAllPokemon) {
-  fetch('https://pokeapi.co/api/v2/pokemon/' + query)
+// get all pokemon of the currently selected generation as json objects {"name":...,"url":...}
+function fetchAllPokemon(generationQuery,setAllPokemon) {
+  fetch('https://pokeapi.co/api/v2/pokemon/' + generationQuery)
   .then(response => response.json())
   .then((data) => setAllPokemon(data.results));
 }
