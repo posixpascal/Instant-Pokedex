@@ -27,6 +27,8 @@ p {
   font-size: calc(12px + 0.3vw);
 }
 
+
+
 img {
   display:block;
   margin:auto;
@@ -47,6 +49,12 @@ img {
 
 /* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
 @media (min-width: 768px) {
+  img {
+    display:block;
+    margin:auto;
+    width: 15vw;
+    height: 12vh;
+  }
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -65,8 +73,8 @@ img {
   img {
     display:block;
     margin:auto;
-    width: 10vw;
-    height: 20vh;
+    width: 7vw;
+    height: 15vh;
   }
 }
 

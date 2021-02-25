@@ -18,13 +18,7 @@
   border-radius: 4px;
 }
 
-.trigger {
-  text-align: center;
-  text-transform: capitalize;
-  display: inline-block;
-  font-size: 12px;
-  font-weight:bold;
-}
+
 
 .poison {
   background-color: rgb(160, 64, 160);

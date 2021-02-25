@@ -6,7 +6,7 @@ import './App.css';
 import React, {useState, useEffect} from "react";
 
 //TODO: evolutionChain.js aufspalten
-//TODO: nach Generationen filtern
+//TODO: falsche Generation verstecken
 //TODO: mobile
 
 

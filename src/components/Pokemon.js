@@ -15,7 +15,7 @@ function Pokemon(props) {
   },[props.name]);
 
   return (
-    <div className="my-4">
+    <div className="mt-3">
       {!isBusy && types !== undefined ?
         <div className="h-100">
           <p className="id text-center mb-n1">#{id}</p>

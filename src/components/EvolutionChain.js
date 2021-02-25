@@ -17,32 +17,30 @@ function EvolutionChain(props) {
   return(
     <div className="flex-sm-row flex-column d-flex">
       {evoInGeneration(props.allPokemon,firstForm) ?
-      <div className="col-3 align-self-center">
+      <div className="col-sm-3 align-self-center">
         <Pokemon name={firstForm}/>
       </div> : null
     }
-      <div className ="col-4 align-self-center">
+      <div className ="col-sm-4 align-self-center">
         {firstEvolutions.map(evo =>
           (evoInGeneration(props.allPokemon,evo.species.name)) ?
           <div className="row">
             <div className="col-sm-3 align-self-center text-center">
               <p className="trigger pb-0 mb-0">{getEvoTrigger(evo)}</p>
-              <hr className="pt-0 mt-0"></hr>
             </div>
             <div className="col-sm-9">
               <Pokemon name={evo.species.name}/>
             </div>
           </div>: null)}
         </div>
-        <div className="col-4 ">
+        <div className="col-sm-4 ">
           {firstEvolutions.map(firstEvo =>
             (firstEvo.evolves_to.map(secondEvo => (evoInGeneration(props.allPokemon,secondEvo.species.name)) ?
-            <div className="row h-100">
-              <div className="col-3 align-self-center text-center">
+            <div className="row">
+              <div className="col-sm-3 align-self-center text-center">
                 <p className="trigger pb-0 mb-0">{getEvoTrigger(secondEvo)}</p>
-                <hr className="pt-0 mt-0"></hr>
               </div>
-              <div className="col-9">
+              <div className="col-sm-9">
                 <Pokemon name={secondEvo.species.name}/>
               </div>
             </div> : null)))}
