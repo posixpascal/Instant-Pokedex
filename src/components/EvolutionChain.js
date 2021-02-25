@@ -34,7 +34,7 @@ const createFirstEvolution = (firstEvoTrigger, firstEvolution) =>
   <div className="d-flex flex-column flex-sm-row">
     {firstEvoTrigger !== undefined ?
     <div className="col-sm-3 d-flex justify-content-center align-self-center">
-      <p className="trigger pt-3 pt-sm-5">{firstEvoTrigger}</p>
+      <p className="trigger pt-3 pt-sm-5 mr-sm-4">{firstEvoTrigger}</p>
     </div>
     : null}
     <div className="col-sm-9">
@@ -45,7 +45,7 @@ const createFirstEvolution = (firstEvoTrigger, firstEvolution) =>
 const createSecondEvolution = (secondEvoTrigger,secondEvolution) =>
   <div className="d-flex flex-column flex-sm-row">
     <div className="col-sm-3 d-flex justify-content-center align-self-center">
-      <p className="trigger pt-3 pt-sm-5">{secondEvoTrigger}</p>
+      <p className="trigger pt-3 pt-sm-5 mr-sm-4">{secondEvoTrigger}</p>
     </div>
     <div className="col-sm-9">
       <Pokemon name={secondEvolution}/>
