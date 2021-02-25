@@ -10,7 +10,9 @@ function Pokemon(props) {
   const [isBusy, setBusy] = useState(true);
 
   useEffect(() => {
-    fetchPokemonTypesAndId(props.name,setId,setTypes,setBusy)
+    let mounted = true;
+    fetchPokemonTypesAndId(props.name,setId,setTypes,setBusy,mounted);
+    return () => {mounted = false};
   }, [props.name]);
 
   return (
@@ -27,7 +29,7 @@ function Pokemon(props) {
           <div className="mt-2 justify-content-center ">
             <p className="types">
               {types.map((type) => (
-                <span className={type.type.name}>
+                <span className={type.type.name} key={type.type.name}>
                   {capitalize(type.type.name)}
                 </span>
               ))}
@@ -51,14 +53,15 @@ Pokemon.propTypes = {
   evoTrigger: PropTypes.array,
 };
 
-const fetchPokemonTypesAndId = (name,setId,setTypes,setBusy) => {
+const fetchPokemonTypesAndId = (name,setId,setTypes,setBusy,mounted) => {
   setBusy(true);
   fetch("https://pokeapi.co/api/v2/pokemon/" + name)
     .then((response) => response.json())
-    .then((data) => {
+    .then((data) => { if (mounted){
       setId(data.id);
       setTypes(data.types);
       setBusy(false);
+    }
     });}
 
 function capitalize(str) {

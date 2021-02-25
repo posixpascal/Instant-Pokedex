@@ -6,28 +6,37 @@ import getEvoTrigger from "../helpers/getEvoTrigger";
 
 function EvolutionChain(props) {
   return (
-    <div className="d-flex flex-column flex-sm-row">
-    <div className="col-sm-3">
-      <Pokemon name={props.firstForm}/>
+    <div className="evo-chain d-flex flex-column flex-sm-row">
+    <div className="col-sm-3 col-offset-1">
+      {createFirstForm(props.firstForm)}
     </div>
-    <div className="col-sm-4">
     {props.firstEvoTrigger !== undefined && props.firstEvolution != undefined ?
-      createFirstEvolution(props.firstEvoTrigger,props.firstEvolution)
+      <div className="col-sm-4">
+      {createFirstEvolution(props.firstEvoTrigger,props.firstEvolution)}
+      </div>
       : null}
-    </div>
-    <div className="col-sm-4">
+
+
     {props.secondEvoTrigger !== undefined && props.secondEvolution != undefined ?
-      createSecondEvolution(props.secondEvoTrigger,props.secondEvolution) : null}
-    </div>
+      <div className="col-sm-4">
+      {createSecondEvolution(props.secondEvoTrigger,props.secondEvolution)}
+      </div>: null}
+
     </div>
   );
 }
 
+const createFirstForm = (firstForm) =>
+       <Pokemon name={firstForm} />;
+
+
 const createFirstEvolution = (firstEvoTrigger, firstEvolution) =>
   <div className="d-flex flex-column flex-sm-row">
-    <div className="col-sm-3 align-self-center">
-      <p className="trigger">{firstEvoTrigger}</p>
+    {firstEvoTrigger !== undefined ?
+    <div className="col-sm-3 d-flex justify-content-center align-self-center">
+      <p className="trigger pt-3 pt-sm-5">{firstEvoTrigger}</p>
     </div>
+    : null}
     <div className="col-sm-9">
       <Pokemon name={firstEvolution} />
     </div>
@@ -35,8 +44,8 @@ const createFirstEvolution = (firstEvoTrigger, firstEvolution) =>
 
 const createSecondEvolution = (secondEvoTrigger,secondEvolution) =>
   <div className="d-flex flex-column flex-sm-row">
-    <div className="col-sm-3 align-self-center">
-      <p className="trigger">{secondEvoTrigger}</p>
+    <div className="col-sm-3 d-flex justify-content-center align-self-center">
+      <p className="trigger pt-3 pt-sm-5">{secondEvoTrigger}</p>
     </div>
     <div className="col-sm-9">
       <Pokemon name={secondEvolution}/>

@@ -3,14 +3,14 @@ import EvolutionChain from "../components/EvolutionChain"
 
 // if the filtered pokemon doesn't have any evolutions
 export const createPokemonWithoutEvolution = (allPokemon,firstForm) =>
-  <EvolutionChain
+  <EvolutionChain key={firstForm}
     allPokemon={allPokemon}
     firstForm={firstForm}
     />
 
 //if the first form has at least one evolution
 export const createShortEvolutionChain = (allPokemon,firstForm,firstEvoTrigger,firstEvolution) =>
-    <EvolutionChain
+    <EvolutionChain key={firstForm + firstEvolution}
       allPokemon={allPokemon}
       firstForm={firstForm}
       firstEvoTrigger={firstEvoTrigger}
@@ -19,7 +19,7 @@ export const createShortEvolutionChain = (allPokemon,firstForm,firstEvoTrigger,f
 
 //if the first evolution has at least one evolution
 export const createLongEvolutionChain = (allPokemon,firstForm,firstEvoTrigger,firstEvolution,secondEvoTrigger,secondEvolution) =>
-  <EvolutionChain
+  <EvolutionChain key={secondEvolution}
     allPokemon={allPokemon}
     firstForm={firstForm}
     firstEvoTrigger={firstEvoTrigger}
