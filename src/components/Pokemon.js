@@ -56,13 +56,13 @@ Pokemon.propTypes = {
 const fetchPokemonTypesAndId = (name,setId,setTypes,setBusy,mounted) => {
   setBusy(true);
   fetch("https://pokeapi.co/api/v2/pokemon/" + name)
-    .then((response) => response.json())
-    .then((data) => { if (mounted){
-      setId(data.id);
-      setTypes(data.types);
-      setBusy(false);
-    }
-    });}
+  .then((response) => response.json())
+  .then((data) => { if (mounted){
+    setId(data.id);
+    setTypes(data.types);
+    setBusy(false);
+  }
+});}
 
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);

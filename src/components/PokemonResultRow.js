@@ -3,6 +3,7 @@ import "./PokemonResultRow.css";
 import AllEvolutionChains from "./AllEvolutionChains";
 import PropTypes from "prop-types";
 
+// one ResultRow will show all possible evolution lines of one pokemon
 function PokemonResultRow(props) {
   return (
     <div className="result-row">
@@ -12,7 +13,7 @@ function PokemonResultRow(props) {
       <AllEvolutionChains
         name={props.name}
         allPokemon={props.allPokemon}
-      />
+        />
 
     </div>
   );

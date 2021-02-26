@@ -11,7 +11,7 @@ function Search(props) {
         type="text"
         placeholder="Search..."
         aria-label="Search"
-      />
+        />
     </form>
   );
 }
