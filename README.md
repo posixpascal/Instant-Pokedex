@@ -1,9 +1,9 @@
 # Instant-Pokedex
 
-## Demo:
+## Demo
 https://keen-mccarthy-187089.netlify.app/
 
-## Vorgehensweise:
+## Vorgehensweise
 
 1. (App.js) Lade die Namen und URLS aller Pokemon von "https://pokeapi.co/api/v2/pokemon/?limit=900" und speichere sie in "allPokemon".
 2. (Search.js) Bei einer Eingabe in das Textfeld werden mithilfe der helper function filterPokemonBySearch alle Pokemon entfernt, die nicht den Suchtext enthalten.
